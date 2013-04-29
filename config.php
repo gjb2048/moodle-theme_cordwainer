@@ -39,10 +39,10 @@ $THEME->sheets = array('custom');
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
-// Exclude the generated sheets.  Less files included in the layout file 'general.php'.
+// Exclude the moodle sheets.  Less files included in the layout file 'general.php'.
 $THEME->parents_exclude_sheets = array(
     'bootstrapbase' => array(
-        'generated',
+        'moodle',
         'editor'
     )
 );
