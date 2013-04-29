@@ -14,22 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Cordwainer theme for use by theme designers to customise the Bootstrap theme
- * using FireFox(http://www.mozilla.org/firefox/) with FireBug(http://getfirebug.com/)
- * and FireLess(https://addons.mozilla.org/en-us/firefox/addon/fireless/).
- *
- * For full information about creating Moodle themes, see:
- * http://docs.moodle.org/dev/Themes_2.0
- *
- * @package    theme
- * @subpackage cordwainer
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Simple theme.
- * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 $hasheading = ($PAGE->heading);
 $hasnavbar = (empty($PAGE->layout_options['nonavbar']) && $PAGE->has_navbar());
 $hasfooter = (empty($PAGE->layout_options['nofooter']));
@@ -41,13 +25,6 @@ $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->regio
 $showsidepre = ($hassidepre && !$PAGE->blocks->region_completely_docked('side-pre', $OUTPUT));
 $showsidepost = ($hassidepost && !$PAGE->blocks->region_completely_docked('side-post', $OUTPUT));
 
-$haslogo = (!empty($PAGE->theme->settings->logo));
-
-$hasfootnote = (!empty($PAGE->theme->settings->footnote));
-$navbar_inverse = '';
-if (!empty($PAGE->theme->settings->invert)) {
-    $navbar_inverse = 'navbar-inverse';
-}
 $custommenu = $OUTPUT->custom_menu();
 $hascustommenu = (empty($PAGE->layout_options['nocustommenu']) && !empty($custommenu));
 
@@ -85,8 +62,8 @@ echo $OUTPUT->doctype() ?>
 <head>
     <title><?php echo $PAGE->title ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->pix_url('favicon', 'theme')?>" />
-    <link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrap/less/moodle.less" />
-    <link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrap/less/editor.less" />
+    <link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrapbase/less/moodle.less" />
+    <link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrapbase/less/editor.less" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -95,11 +72,11 @@ echo $OUTPUT->doctype() ?>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-<header role="banner" class="navbar <?php echo $navbar_inverse ?> navbar-fixed-top">
+<header role="banner" class="navbar navbar-fixed-top">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $SITE->shortname; ?></a>
-            <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target=".nav-collapse">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -125,15 +102,7 @@ echo $OUTPUT->doctype() ?>
         <nav class="breadcrumb-button"><?php echo $PAGE->button; ?></nav>
         <?php echo $OUTPUT->navbar(); ?>
     <?php } ?>
-
-        <?php
-    if (!$haslogo) { ?>
-        <h1><?php echo $PAGE->heading ?></h1>
-        <?php
-    } else { ?>
-         <a class="logo" href="<?php echo $CFG->wwwroot; ?>" title="<?php print_string('home'); ?>"></a>
-        <?php
-    } ?>
+    <h1><?php echo $PAGE->heading ?></h1>
 
     <?php if (!empty($courseheader)) { ?>
         <div id="course-header"><?php echo $courseheader; ?></div>
@@ -146,13 +115,13 @@ echo $OUTPUT->doctype() ?>
 <?php if ($layout === 'pre-and-post') { ?>
     <div id="region-bs-main-and-pre" class="span9">
     <div class="row-fluid">
-    <section id="region-bs-main" class="span8 pull-right">
+    <section id="region-main" class="span8 pull-right">
 <?php } else if ($layout === 'side-post-only') { ?>
-    <section id="region-bs-main" class="span9">
+    <section id="region-main" class="span9">
 <?php } else if ($layout === 'side-pre-only') { ?>
-    <section id="region-bs-main" class="span9 pull-right">
+    <section id="region-main" class="span9 pull-right">
 <?php } else if ($layout === 'content-only') { ?>
-    <section id="region-bs-main" class="span12">
+    <section id="region-main" class="span12">
 <?php } ?>
 
 
@@ -164,29 +133,36 @@ echo $OUTPUT->doctype() ?>
 
 <?php if ($layout !== 'content-only') {
           if ($layout === 'pre-and-post') { ?>
-            <aside id="region-pre" class="span4 block-region desktop-first-column region-content">
+            <aside class="span4 desktop-first-column">
     <?php } else if ($layout === 'side-pre-only') { ?>
-            <aside id="region-pre" class="span3 block-region desktop-first-column region-content">
+            <aside class="span3 desktop-first-column">
     <?php } ?>
+          <div id="region-pre" class="block-region">
+          <div class="region-content">
           <?php
                 if (!right_to_left()) {
                     echo $OUTPUT->blocks_for_region('side-pre');
                 } else if ($hassidepost) {
                     echo $OUTPUT->blocks_for_region('side-post');
-                }
-            ?>
-            </aside>
+                } ?>
+          </div>
+          </div>
+          </aside>
     <?php if ($layout === 'pre-and-post') {
           ?></div></div><?php // Close row-fluid and span9.
    }
 
     if ($layout === 'side-post-only' OR $layout === 'pre-and-post') { ?>
-        <aside id="region-post" class="span3 block-region region-content">
+        <aside class="span3">
+        <div id="region-post" class="block-region">
+        <div class="region-content">
         <?php if (!right_to_left()) {
                   echo $OUTPUT->blocks_for_region('side-post');
               } else {
                   echo $OUTPUT->blocks_for_region('side-pre');
               } ?>
+        </div>
+        </div>
         </aside>
     <?php } ?>
 <?php } ?>
@@ -194,15 +170,6 @@ echo $OUTPUT->doctype() ?>
 
 <footer id="page-footer">
     <p class="helplink"><?php echo page_doc_link(get_string('moodledocslink')) ?></p>
-
-    <?php
-if ($hasfootnote) { ?>
-   <div class="footnote text-center">
-   <?php echo $PAGE->theme->settings->footnote; ?>
-   </div>
-    <?php
-} ?>
-
     <?php echo $OUTPUT->standard_footer_html(); ?>
 </footer>
 

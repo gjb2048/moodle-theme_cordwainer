@@ -34,14 +34,14 @@ $THEME->name = 'cordwainer';
 
 //
 $THEME->doctype = 'html5';
-$THEME->parents = array('bootstrap');
+$THEME->parents = array('bootstrapbase');
 $THEME->sheets = array('custom');
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
 // Exclude the generated sheets.  Less files included in the layout file 'general.php'.
 $THEME->parents_exclude_sheets = array(
-    'bootstrap' => array(
+    'bootstrapbase' => array(
         'generated',
         'editor'
     )
