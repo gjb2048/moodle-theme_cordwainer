@@ -36,6 +36,10 @@ if ($PAGE->user_is_editing()) {
     }
 }
 
+$navbar_inverse = '';
+if (!empty($PAGE->theme->settings->invert)) {
+    $navbar_inverse = 'navbar-inverse';
+}
 $custommenu = $OUTPUT->custom_menu();
 $hascustommenu = (empty($PAGE->layout_options['nocustommenu']) && !empty($custommenu));
 
@@ -83,7 +87,7 @@ echo $OUTPUT->doctype() ?>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
-<header role="banner" class="navbar navbar-fixed-top">
+<header role="banner" class="navbar <?php echo $navbar_inverse ?> navbar-fixed-top">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $SITE->shortname; ?></a>
@@ -124,13 +128,13 @@ echo $OUTPUT->doctype() ?>
 <div id="page-content" class="row-fluid">
 
 <?php if ($layout === 'pre-and-post') { ?>
-    <div id="region-bs-main-and-pre" class="span9">
+    <div id="region-bs-main-and-pre" class="span10">
     <div class="row-fluid">
-    <section id="region-main" class="span8 pull-right">
+    <section id="region-main" class="span10 pull-right">
 <?php } else if ($layout === 'side-post-only') { ?>
-    <section id="region-main" class="span9">
+    <section id="region-main" class="span10">
 <?php } else if ($layout === 'side-pre-only') { ?>
-    <section id="region-main" class="span9 pull-right">
+    <section id="region-main" class="span10 pull-right">
 <?php } else if ($layout === 'content-only') { ?>
     <section id="region-main" class="span12">
 <?php } ?>
@@ -144,9 +148,9 @@ echo $OUTPUT->doctype() ?>
 
 <?php if ($layout !== 'content-only') {
           if ($layout === 'pre-and-post') { ?>
-            <aside class="span4 desktop-first-column">
+            <aside class="span2 desktop-first-column">
     <?php } else if ($layout === 'side-pre-only') { ?>
-            <aside class="span3 desktop-first-column">
+            <aside class="span2 desktop-first-column">
     <?php } ?>
           <div id="region-pre" class="block-region">
           <div class="region-content">
@@ -164,7 +168,7 @@ echo $OUTPUT->doctype() ?>
    }
 
     if ($layout === 'side-post-only' OR $layout === 'pre-and-post') { ?>
-        <aside class="span3">
+        <aside class="span2">
         <div id="region-post" class="block-region">
         <div class="region-content">
         <?php if (!right_to_left()) {
