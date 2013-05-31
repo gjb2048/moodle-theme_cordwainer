@@ -36,6 +36,9 @@ if ($PAGE->user_is_editing()) {
     }
 }
 
+$haslogo = (!empty($PAGE->theme->settings->logo));
+
+$hasfootnote = (!empty($PAGE->theme->settings->footnote));
 $navbar_inverse = '';
 if (!empty($PAGE->theme->settings->invert)) {
     $navbar_inverse = 'navbar-inverse';
@@ -83,7 +86,7 @@ echo $OUTPUT->doctype() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join($bodyclasses)) ?>">
+<body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
@@ -91,7 +94,7 @@ echo $OUTPUT->doctype() ?>
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
             <a class="brand" href="<?php echo $CFG->wwwroot;?>"><?php echo $SITE->shortname; ?></a>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <a class="btn btn-navbar" data-toggle="workaround-collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -117,7 +120,15 @@ echo $OUTPUT->doctype() ?>
         <nav class="breadcrumb-button"><?php echo $PAGE->button; ?></nav>
         <?php echo $OUTPUT->navbar(); ?>
     <?php } ?>
-    <h1><?php echo $PAGE->heading ?></h1>
+
+        <?php
+    if (!$haslogo) { ?>
+        <h1><?php echo $PAGE->heading ?></h1>
+        <?php
+    } else { ?>
+         <a class="logo" href="<?php echo $CFG->wwwroot; ?>" title="<?php print_string('home'); ?>"></a>
+        <?php
+    } ?>
 
     <?php if (!empty($courseheader)) { ?>
         <div id="course-header"><?php echo $courseheader; ?></div>
@@ -128,13 +139,13 @@ echo $OUTPUT->doctype() ?>
 <div id="page-content" class="row-fluid">
 
 <?php if ($layout === 'pre-and-post') { ?>
-    <div id="region-bs-main-and-pre" class="span10">
+    <div id="region-bs-main-and-pre" class="span9">
     <div class="row-fluid">
-    <section id="region-main" class="span10 pull-right">
+    <section id="region-main" class="span8 pull-right">
 <?php } else if ($layout === 'side-post-only') { ?>
-    <section id="region-main" class="span10">
+    <section id="region-main" class="span9">
 <?php } else if ($layout === 'side-pre-only') { ?>
-    <section id="region-main" class="span10 pull-right">
+    <section id="region-main" class="span9 pull-right">
 <?php } else if ($layout === 'content-only') { ?>
     <section id="region-main" class="span12">
 <?php } ?>
@@ -148,9 +159,9 @@ echo $OUTPUT->doctype() ?>
 
 <?php if ($layout !== 'content-only') {
           if ($layout === 'pre-and-post') { ?>
-            <aside class="span2 desktop-first-column">
+            <aside class="span4 desktop-first-column">
     <?php } else if ($layout === 'side-pre-only') { ?>
-            <aside class="span2 desktop-first-column">
+            <aside class="span3 desktop-first-column">
     <?php } ?>
           <div id="region-pre" class="block-region">
           <div class="region-content">
@@ -159,7 +170,8 @@ echo $OUTPUT->doctype() ?>
                     echo $OUTPUT->blocks_for_region('side-pre');
                 } else if ($hassidepost) {
                     echo $OUTPUT->blocks_for_region('side-post');
-                } ?>
+                }
+          ?>
           </div>
           </div>
           </aside>
@@ -168,7 +180,7 @@ echo $OUTPUT->doctype() ?>
    }
 
     if ($layout === 'side-post-only' OR $layout === 'pre-and-post') { ?>
-        <aside class="span2">
+        <aside class="span3">
         <div id="region-post" class="block-region">
         <div class="region-content">
         <?php if (!right_to_left()) {
@@ -185,6 +197,15 @@ echo $OUTPUT->doctype() ?>
 
 <footer id="page-footer">
     <p class="helplink"><?php echo page_doc_link(get_string('moodledocslink')) ?></p>
+
+    <?php
+if ($hasfootnote) { ?>
+   <div class="footnote text-center">
+   <?php echo $PAGE->theme->settings->footnote; ?>
+   </div>
+    <?php
+} ?>
+
     <?php echo $OUTPUT->standard_footer_html(); ?>
 </footer>
 
