@@ -56,6 +56,10 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+19th October 2013 - Version 2.5.0.2 - Beta.
+  1.  Update to stable version of Moodle 2.5.
+  2.  Update to new 'columnX.php' layouts.
+
 22nd April 2013 - Version 2.5.0.1
   1.  Initial version for Moodle 2.5beta.
 

@@ -32,8 +32,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2013042200;
-$plugin->requires  = 2013040500;
+$plugin->version   = 2013101900;
+$plugin->requires  = 2013050100;
 $plugin->component = 'theme_cordwainer';
 $plugin->maturity = MATURITY_BETA;
-$plugin->release = '2.5.0.1';
+$plugin->release = '2.5.0.2';
