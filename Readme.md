@@ -11,10 +11,11 @@ NOT for use in production environments.
 
 Required version of Moodle
 ==========================
-This version works with Moodle version 2013040500.00 release 2.5beta+ (Build: 20130405) and above until the next release.
+This version works with Moodle version 2013110600.00 release 2.6beta+ (Build: 20131106) and above within the 2.6 branch until the
+next release.
 
-NOTE: This is a pre-release Moodle 2.5 Beta version that must NOT be used on production servers.  It is subject to change
-at any time without notice.
+NOTE: This is a Moodle 2.6 Beta version that must NOT be used on production servers.  It is subject to change at any time without
+notice.
 
 Installation
 ============
@@ -56,6 +57,9 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+6th November 2013 Version 2.6.0.1
+  1.  Initial BETA code for Moodle 2.6.
+
 22nd April 2013 - Version 2.5.0.1
   1.  Initial version for Moodle 2.5beta.
 
