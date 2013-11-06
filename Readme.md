@@ -60,6 +60,10 @@ Version Information
 6th November 2013 Version 2.6.0.1
   1.  Initial BETA code for Moodle 2.6.
 
+19th October 2013 - Version 2.5.0.2 - Beta.
+  1.  Update to stable version of Moodle 2.5.
+  2.  Update to new 'columnX.php' layouts.
+
 22nd April 2013 - Version 2.5.0.1
   1.  Initial version for Moodle 2.5beta.
 
@@ -70,6 +74,6 @@ Bas Brands, David Scotson, Stuart Lamour, Mark Aberdour, Paul Hibbitts and Mary 
 
 Me
 ==
-G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 22nd April 2013.
+G J Barnard MSc. BSc(Hons)(Sndw). MBCS. CEng. CITP. PGCE. - 19th October 2013.
 Moodle profile: http://moodle.org/user/profile.php?id=442195.
 Web profile   : http://about.me/gjbarnard

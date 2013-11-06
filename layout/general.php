@@ -25,6 +25,17 @@ $hassidepost = (empty($PAGE->layout_options['noblocks']) && $PAGE->blocks->regio
 $showsidepre = ($hassidepre && !$PAGE->blocks->region_completely_docked('side-pre', $OUTPUT));
 $showsidepost = ($hassidepost && !$PAGE->blocks->region_completely_docked('side-post', $OUTPUT));
 
+// If there can be a sidepost region on this page and we are editing, always
+// show it so blocks can be dragged into it.
+if ($PAGE->user_is_editing()) {
+    if ($PAGE->blocks->is_known_region('side-pre')) {
+        $showsidepre = true;
+    }
+    if ($PAGE->blocks->is_known_region('side-post')) {
+        $showsidepost = true;
+    }
+}
+
 $haslogo = (!empty($PAGE->theme->settings->logo));
 
 $hasfootnote = (!empty($PAGE->theme->settings->footnote));
@@ -75,7 +86,7 @@ echo $OUTPUT->doctype() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join($bodyclasses)) ?>">
+<body id="<?php p($PAGE->bodyid) ?>" class="<?php p($PAGE->bodyclasses.' '.join(' ', $bodyclasses)) ?>">
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
