@@ -180,7 +180,7 @@ $THEME->javascripts = array(
     'less-1.3.3.min'
 );
 
-if (check_browser_version('MSIE') && !check_browser_version('MSIE', '9.0')) {
+if (core_useragent::check_browser_version('MSIE') && !core_useragent::check_browser_version('MSIE', '9.0')) {
     $THEME->javascripts[] = 'html5shiv';
 }
 
