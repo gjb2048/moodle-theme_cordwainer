@@ -7,7 +7,9 @@ FireFox(http://www.mozilla.org/firefox/) with
 FireBug(http://getfirebug.com/) and
 FireLess(https://addons.mozilla.org/en-us/firefox/addon/fireless/).
 
-NOT for use in production environments.
+Theme designer mode MUST be on.
+
+NOTE for use in production environments.
 
 Required version of Moodle
 ==========================
@@ -57,6 +59,12 @@ can be really useful in visualising the issue along with any files you consider 
 
 Version Information
 ===================
+14th December 2013 Version 2.6.0.2
+  1.  Added on / off button for debugging the LESS CSS so that you can quickly navigate to the page you want to debug
+      and then turn it on.  This is because the client side compiler is much slower than the downloaded CSS.
+  2.  Fixed images / icons etc. not showing up when debugging.
+  3.  Upgraded to LESS 1.5.0.
+
 6th November 2013 Version 2.6.0.1
   1.  Initial BETA code for Moodle 2.6.
 

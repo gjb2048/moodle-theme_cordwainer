@@ -39,23 +39,12 @@ $THEME->sheets = array('custom');
 $THEME->supportscssoptimisation = false;
 $THEME->yuicssmodules = array();
 
-// Exclude the moodle sheets.  Less files included in the layout file 'general.php'.
-$THEME->parents_exclude_sheets = array(
-    'bootstrapbase' => array(
-        'moodle',
-        'editor'
-    )
-);
-
 $THEME->editor_sheets = array();
 
 $THEME->plugins_exclude_sheets = array(
     'block' => array(
         'html'
-    ),
-    'gradereport' => array(
-        'grader'
-    ),
+    )
 );
 
 $THEME->layouts = array(
@@ -92,8 +81,7 @@ $THEME->layouts = array(
     'frontpage' => array(
         'file' => 'columns3.php',
         'regions' => array('side-pre', 'side-post'),
-        'defaultregion' => 'side-pre',
-        'options' => array('nonavbar'=>true),
+        'defaultregion' => 'side-pre'
     ),
     // Server administration scripts.
     'admin' => array(
@@ -122,7 +110,7 @@ $THEME->layouts = array(
 
     // Pages that appear in pop-up windows - no navigation, no blocks, no header.
     'popup' => array(
-        'file' => 'columns1.php',
+        'file' => 'popup.php',
         'regions' => array(),
         'options' => array('nofooter'=>true, 'nonavbar'=>true),
     ),
@@ -177,7 +165,7 @@ $THEME->csspostprocess = 'cordwainer_process_css';
 // FireLess to debug the styles.
 $THEME->javascripts = array(
     'options',
-    'less-1.3.3.min'
+    'less-1.5.0.min'
 );
 
 if (core_useragent::check_browser_version('MSIE') && !core_useragent::check_browser_version('MSIE', '9.0')) {

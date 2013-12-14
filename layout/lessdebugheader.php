@@ -15,28 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Cordwainer theme for use by theme designers to customise the Bootstrap theme
- * using FireFox(http://www.mozilla.org/firefox/) with FireBug(http://getfirebug.com/)
- * and FireLess(https://addons.mozilla.org/en-us/firefox/addon/fireless/).
- *
- * For full information about creating Moodle themes, see:
- * http://docs.moodle.org/dev/Themes_2.0
+ * Cordwainer theme with the underlying Bootstrap theme.
  *
  * @package    theme
  * @subpackage cordwainer
- * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Simple theme.
+ * @copyright  &copy; 2013-onwards G J Barnard in respect to modifications of the Clean theme.
  * @author     G J Barnard - gjbarnard at gmail dot com and {@link http://moodle.org/user/profile.php?id=442195}
- * @author     Based on code originally written by Mary Evans, Bas Brands, Stuart Lamour and David Scotson.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
-
-$plugin->version   = 2013121400;
-$plugin->requires  = 2013111800; // 2.6 (Build: 20131118).
-$plugin->component = 'theme_cordwainer';
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = '2.6.0.2';
-$plugin->dependencies = array(
-    'theme_bootstrapbase'  => 2013110500
-);
+if ($PAGE->theme->settings->lessdebug) {
+?>
+<link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrapbase/less/moodle.less" />
+<link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrapbase/less/editor.less" />
+<?php
+}
+?>

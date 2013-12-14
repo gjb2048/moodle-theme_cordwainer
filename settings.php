@@ -34,6 +34,13 @@ defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
 
+    // LESS debug.
+    $name = 'theme_cordwainer/lessdebug';
+    $title = get_string('lessdebug', 'theme_cordwainer');
+    $description = get_string('lessdebugdesc', 'theme_cordwainer');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+    $settings->add($setting);
+
     // Invert Navbar to dark background.
     $name = 'theme_cordwainer/invert';
     $title = get_string('invert', 'theme_cordwainer');

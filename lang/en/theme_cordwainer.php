@@ -56,6 +56,12 @@ $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be 
 $string['footnote'] = 'Footnote';
 $string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.';
 
+$string['lessdebug'] = 'LESS Debugging';
+$string['lessdebugdesc'] = 'States if we are debugging LESS.  Only turn on when you are on the page you need to debug.';
+$string['turnlessdebugoff'] = 'Turn LESS debugging off';
+$string['turnlessdebugon'] = 'Turn LESS debugging on';
+$string['themedesignermodeon'] = 'Theme designer mode MUST be on';
+
 $string['invert'] = 'Invert navbar';
 $string['invertdesc'] = 'Swaps text and background for the navbar at the top of the page between black and white.';
 

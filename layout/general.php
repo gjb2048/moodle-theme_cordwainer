@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+require_once(dirname(__FILE__).'/lessdebug.php');
+
 $hasheading = ($PAGE->heading);
 $hasnavbar = (empty($PAGE->layout_options['nonavbar']) && $PAGE->has_navbar());
 $hasfooter = (empty($PAGE->layout_options['nofooter']));
@@ -80,8 +82,7 @@ echo $OUTPUT->doctype() ?>
 <head>
     <title><?php echo $PAGE->title ?></title>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->pix_url('favicon', 'theme')?>" />
-    <link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrapbase/less/moodle.less" />
-    <link rel="stylesheet/less" type="text/css" href="<?php echo $CFG->wwwroot;?>/theme/bootstrapbase/less/editor.less" />
+    <?php require_once(dirname(__FILE__).'/lessdebugheader.php'); ?>
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -119,6 +120,7 @@ echo $OUTPUT->doctype() ?>
     <?php if ($hasnavbar) { ?>
         <nav class="breadcrumb-button"><?php echo $PAGE->button; ?></nav>
         <?php echo $OUTPUT->navbar(); ?>
+        <div class="breadcrumb-button"><?php echo $OUTPUT->lessdebug_button($PAGE->url); ?></div>
     <?php } ?>
 
         <?php
